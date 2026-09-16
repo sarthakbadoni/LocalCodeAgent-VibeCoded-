@@ -1,0 +1,14 @@
+{
+  "conversation_history": [],
+  "thread_history": [],
+  "summary": "No prior conversation summary.",
+  "task_memory": {
+    "current_objective": "",
+    "status": "idle",
+    "subtasks": [],
+    "completed": [],
+    "next_action": "",
+    "updated_at": null
+  },
+  "project_snapshot": ""
+}

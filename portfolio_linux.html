@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@Portfolio - Linux Terminal Theme</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #0c0c0c;
+            --terminal-green: #26ff17;
+            --terminal-dark-green: #1a9e35;
+            --terminal-dim: #1b5e20;
+            --terminal-bright-green: #4dbf4d;
+            --terminal-yellow: #cdd624;
+            --terminal-blue: #7daef8;
+            --terminal-purple: #ae99eb;
+            --terminal-red: #fca130;
+            --terminal-white: #ffffff;
+            --dim-text: #5e6a76;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', 'Fira Code', monospace;
+            background-color: var(--bg-color);
+            color: var(--terminal-green);
+            line-height: 1.6;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            border-bottom: 1px solid var(--terminal-dim);
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--terminal-green);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--terminal-bright-green);
+            text-decoration: underline;
+        }
+
+        /* Main Content */
+        main {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .sidebar, .content {
+            background: rgba(15, 15, 15, 0.7);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--terminal-dim);
+        }
+
+        .avatar-section {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--terminal-dim), var(--terminal-dark-green));
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: var(--terminal-white);
+            border: 2px solid var(--terminal-green);
+        }
+
+        .name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .role {
+            color: var(--terminal-blue);
+            font-size: 1rem;
+        }
+
+        .about-text {
+            color: var(--dim-text);
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        /* Skills */
+        .skills-section {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--terminal-dim);
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .section-title::before {
+            content: '$';
+            color: var(--terminal-yellow);
+        }
+
+        .skills-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 0.5rem;
+        }
+
+        .skill {
+            background: var(--terminal-dim);
+            padding: 0.5rem 0.75rem;
+            text-align: center;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill:hover {
+            background: var(--terminal-dark-green);
+            color: var(--terminal-white);
+        }
+
+        /* Projects */
+        .projects-section {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--terminal-dim);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .project-card {
+            background: rgba(26, 62, 97, 0.1);
+            padding: 1.5rem;
+            border-radius: 6px;
+            border-left: 3px solid var(--terminal-blue);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            background: rgba(26, 62, 97, 0.2);
+            transform: translateX(5px);
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--terminal-white);
+        }
+
+        .project-desc {
+            color: var(--dim-text);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-links a {
+            display: inline-block;
+            margin-right: 1rem;
+            color: var(--terminal-blue);
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        .project-links a:hover {
+            text-decoration: underline;
+        }
+
+        /* Terminal Window */
+        .terminal-window {
+            margin-top: 4rem;
+            background: #1a1a1a;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .terminal-header {
+            background: var(--terminal-dim);
+            padding: 0.75rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--bg-color);
+        }
+
+        .terminal-dots {
+            display: flex;
+            gap: 8px;
+        }
+
+        .terminal-content {
+            padding: 1.5rem;
+            font-family: 'JetBrains Mono', monospace;
+            min-height: 300px;
+        }
+
+        /* Terminal Output */
+        .terminal-input {
+            color: var(--terminal-green);
+            margin-bottom: 1rem;
+        }
+
+        .terminal-output {
+            color: var(--dim-text);
+            white-space: pre-wrap;
+            font-size: 0.85rem;
+        }
+
+        .command-success {
+            color: var(--terminal-green);
+        }
+
+        .folder-name {
+            color: var(--terminal-blue);
+        }
+
+        /* Contact Form */
+        .contact-section {
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--terminal-dim);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            color: var(--terminal-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            background: #0f0f0f;
+            border: 1px solid var(--terminal-dim);
+            color: var(--terminal-green);
+            padding: 0.75rem;
+            font-family: inherit;
+            font-size: 0.9rem;
+            border-radius: 4px;
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--terminal-green);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--terminal-dim);
+            color: var(--terminal-green);
+            border: none;
+            padding: 0.75rem 2rem;
+            font-family: inherit;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .submit-btn:hover {
+            background: var(--terminal-dark-green);
+        }
+
+        /* Social Links */
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: var(--terminal-dim);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--terminal-green);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            background: var(--terminal-dark-green);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 4rem;
+            padding: 2rem;
+            border-top: 1px solid var(--terminal-dim);
+            text-align: center;
+            color: var(--dim-text);
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            main {
+                grid-template-columns: 1fr;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                justify-content: center;
+            }
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--terminal-dim);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--terminal-dark-green);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="logo">~/@portfolio</div>
+                <nav>
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <main>
+            <aside class="sidebar">
+                <div class="avatar-section">
+                    <div class="avatar">👨‍💻</div>
+                    <h1 class="name">&lt;Dev&gt;/</h1>
+                    <p class="role">Full Stack Developer</p>
+                    <p class="about-text">
+                        Welcome to my terminal. I build web applications, 
+                        design responsive interfaces, and automate the mundane.
+                        Currently exploring AI/ML and building accessible digital experiences.
+                    </p>
+
+                    <div class="skills-section">
+                        <h2 class="section-title">Technical Arsenal</h2>
+                        <div class="skills-list">
+                            <span class="skill">Python</span>
+                            <span class="skill">JavaScript</span>
+                            <span class="skill">TypeScript</span>
+                            <span class="skill">React</span>
+                            <span class="skill">Node.js</span>
+                            <span class="skill">Django</span>
+                            <span class="skill">PostgreSQL</span>
+                            <span class="skill">Docker</span>
+                            <span class="skill">Git</span>
+                            <span class="skill">Linux</span>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="#" class="social-link" title="GitHub">🐙</a>
+                        <a href="#" class="social-link" title="LinkedIn">💼</a>
+                        <a href="#" class="social-link" title="Twitter">🐦</a>
+                        <a href="#" class="social-link" title="Email">✉️</a>
+                    </div>
+                </div>
+            </aside>
+
+            <section class="content">
+                <div class="projects-section">
+                    <h2 class="section-title">My Workstations</h2>
+                    <div class="project-grid">
+                        <article class="project-card">
+                            <h3 class="project-title">$ personal-finance-dashboard</h3>
+                            <p class="project-desc">
+                                A responsive web dashboard for tracking personal finances with clean design, 
+                                real-time data visualization, and intuitive budget management.
+                            </p>
+                            <div class="project-links">
+                                <a href="#">View Source</a>
+                                <a href="#">Live Demo →</a>
+                            </div>
+                        </article>
+
+                        <article class="project-card">
+                            <h3 class="project-title">$ babli.txt</h3>
+                            <p class="project-desc">
+                                A simple text file containing the name "Babli" - demonstrating file operations.
+                            </p>
+                            <div class="project-links">
+                                <a href="#">View Source</a>
+                            </div>
+                        </article>
+
+                        <article class="project-card">
+                            <h3 class="project-title">$ portfolio_linux.html</h3>
+                            <p class="project-desc">
+                                This very terminal-themed portfolio website you're currently viewing.
+                                Built with pure HTML/CSS and a love for Unix aesthetics.
+                            </p>
+                            <div class="project-links">
+                                <a href="#">View Source</a>
+                                <a href="#">Live Demo →</a>
+                            </div>
+                        </article>
+
+                        <article class="project-card">
+                            <h3 class="project-title">$ finance-api</h3>
+                            <p class="project-desc">
+                                RESTful API for financial data processing with authentication, 
+                                rate limiting, and comprehensive documentation.
+                            </p>
+                            <div class="project-links">
+                                <a href="#">View Source</a>
+                                <a href="#">API Docs →</a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="contact-section">
+                    <h2 class="section-title">Initialize Connection...</h2>
+                    <form>
+                        <div class="form-group">
+                            <label for="name" class="form-label">&gt; Name:</label>
+                            <input type="text" id="name" name="name" class="form-input" placeholder="Enter your name..." />
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">&gt; Email:</label>
+                            <input type="email" id="email" name="email" class="form-input" placeholder="email@example.com" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message" class="form-label">&gt; Message:</label>
+                            <textarea id="message" name="message" class="form-textarea" placeholder="Type your message here..."></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">Execute Transmission →</button>
+                    </form>
+                </div>
+            </section>
+        </main>
+
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <div class="terminal-dots">
+                    <div class="terminal-dot"></div>
+                    <div class="terminal-dot"></div>
+                    <div class="terminal-dot"></div>
+                </div>
+                <span style="color: var(--dim-text); margin-left: auto;">bash — bash</span>
+            </div>
+            <div class="terminal-content">
+                <div class="terminal-input">root@portfolio:~/projects# whoami</div>
+                <div class="terminal-output">&lt;Dev&gt;/</div>
+
+                <br />
+
+                <div class="terminal-input">root@portfolio:~/projects# cat .bashrc</div>
+                <div class="terminal-output"># Welcome to my terminal! 👋
+alias python='python3 --version'
+alias py='pip'
+alias dev='cd ~/projects && clear'
+
+echo "Hello from the dark side..."
+
+git config --global user.email "your@email.com"
+git config --global user.name "<Dev>/"
+
+</div>
+
+                <br />
+
+                <div class="terminal-input">root@portfolio:~/projects# ls -la projects/</div>
+                <div class="terminal-output">total 164
+drwxr-xr-x 2 root root 4096 Dec  5 03:58 .
+drwx------ 1 root root 4096 Dec  5 03:57 ..
+-rw-r--r-- 1 root root 1234 Dec  5 03:58 babli.txt
+-rw-r--r-- 1 root root 5432 Dec  5 03:58 portfolio_linux.html
+</div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; <span id="year"></span> <span class="folder-name">&lt;Dev&gt;/</span> All systems operational.</p>
+            <p style="margin-top: 0.5rem; color: var(--terminal-dim);">Current directory: ~/projects</p>
+        </footer>
+
+        <script>
+            // Set current year in footer
+            document.getElementById('year').textContent = new Date().getFullYear();
+            
+            // Add typing effect to terminal window
+            console.log('%c Terminal initialized successfully ', 'background: #26ff17; color: #000; font-weight: bold;');
+            console.log('%c Type commands like "help" to see available options', 'color: var(--terminal-green);');
+        </script>
+    </div>
+</body>
+</html>
